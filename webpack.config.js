@@ -1,75 +1,75 @@
 const Encore = require('@symfony/webpack-encore');
 
-// Manually configure the runtime environment if not already configured yet by the "encore" command.
-// It's useful when you use tools that rely on webpack.config.js file.
+// Configuración manual del entorno de tiempo de ejecución si aún no está configurado por el comando "encore".
+// Es útil cuando se utilizan herramientas que dependen del archivo webpack.config.js.
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
 
 Encore
-    // directory where compiled assets will be stored
+    // directorio donde se almacenarán los activos compilados
     .setOutputPath('public/build/')
-    // public path used by the web server to access the output path
+    // ruta pública utilizada por el servidor web para acceder al directorio de salida
     .setPublicPath('/build')
-    // only needed for CDN's or subdirectory deploy
-    //.setManifestKeyPrefix('build/')
+    // solo necesario para CDNs o implementación en subdirectorios
+    // .setManifestKeyPrefix('build/')
 
     .enablePostCssLoader()
 
     /*
-     * ENTRY CONFIG
+     * CONFIGURACIÓN DE ENTRADA
      *
-     * Each entry will result in one JavaScript file (e.g. app.js)
-     * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
+     * Cada entrada generará un archivo JavaScript (por ejemplo, app.js)
+     * y un archivo CSS (por ejemplo, app.css) si su JavaScript importa CSS.
      */
     .addEntry('app', './assets/app.js')
 
-    // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
+    // Cuando se habilita, Webpack "divide" sus archivos en piezas más pequeñas para una mayor optimización.
     .splitEntryChunks()
 
-    // will require an extra script tag for runtime.js
-    // but, you probably want this, unless you're building a single-page app
+    // requerirá una etiqueta de script adicional para runtime.js
+    // pero probablemente quieras esto, a menos que estés construyendo una aplicación de una sola página
     .enableSingleRuntimeChunk()
 
     /*
-     * FEATURE CONFIG
+     * CONFIGURACIÓN DE CARACTERÍSTICAS
      *
-     * Enable & configure other features below. For a full
-     * list of features, see:
+     * Habilite y configure otras características a continuación. Para obtener una lista completa
+     * de características, consulte:
      * https://symfony.com/doc/current/frontend.html#adding-more-features
      */
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
     .enableSourceMaps(!Encore.isProduction())
-    // enables hashed filenames (e.g. app.abc123.css)
+    // habilita nombres de archivo con hash (por ejemplo, app.abc123.css)
     .enableVersioning(Encore.isProduction())
 
-    // configure Babel
+    // Configura Babel
     // .configureBabel((config) => {
     //     config.plugins.push('@babel/a-babel-plugin');
     // })
 
-    // enables and configure @babel/preset-env polyfills
+    // habilita y configura polifills de @babel/preset-env
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = '3.23';
     })
 
-    // enables Sass/SCSS support
-    //.enableSassLoader()
+    // habilita el soporte de Sass/SCSS
+    // .enableSassLoader()
 
-    // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
+    // descomentar si se utiliza TypeScript
+    // .enableTypeScriptLoader()
 
-    // uncomment if you use React
-    //.enableReactPreset()
+    // descomentar si se utiliza React
+    // .enableReactPreset()
 
-    // uncomment to get integrity="..." attributes on your script & link tags
-    // requires WebpackEncoreBundle 1.4 or higher
-    //.enableIntegrityHashes(Encore.isProduction())
+    // descomentar para obtener atributos de integridad "..." en sus etiquetas de script y enlace
+    // requiere WebpackEncoreBundle 1.4 o superior
+    // .enableIntegrityHashes(Encore.isProduction())
 
-    // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+    // descomentar si tiene problemas con un complemento de jQuery
+    // .autoProvidejQuery()
 ;
 
 module.exports = Encore.getWebpackConfig();

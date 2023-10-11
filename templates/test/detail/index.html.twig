@@ -15,6 +15,7 @@
     <br>
     <main>
         <article>
+            <img src="{{ asset(noticia[0].url) }}" width="800" alt="Error">
             <h1 class="text-2xl">{{ noticia[0].title }}</h1>
             <h2>Categoría: {{ noticia[0].category }}</h1>{# imprime el índice category dentro del elemento que se está iterando #}
             <p>{{ noticia[0].content }}</p>{# imprime solo los primeros 30 caracteres #}

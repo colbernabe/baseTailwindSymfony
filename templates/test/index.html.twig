@@ -17,11 +17,12 @@
         {% if noticias == [] %}
             <p>No hay noticias para mostrar en {{ category }}...</p>
         {% endif %}
-
+        
         {% for noticia in noticias %}
             <article>
-                <h1 class="text-2xl"><a href="{{path('app_noticias_detalle',{'id': noticia.id  }) }}">{{ noticia.title }}</h1>
-                <h2>Categoría: {{ noticia.category }}</h1>{# imprime el índice category dentro del elemento que se está iterando #}
+                <img src="{{ asset(noticia.url) }}" width="300" alt="Error">
+                <h1 class="text-2xl"><a href="{{path('app_noticias_detalle',{'id': noticia.id  }) }}">{{ noticia.title }}</a></h1>
+                <h2>Categoría: {{ noticia.category }}</h2>{# imprime el índice category dentro del elemento que se está iterando #}
                 <p>{{ noticia.content|slice(0, 30,) ~ (noticia.content|length > 30 ? '...': '') }}</p>{# imprime solo los primeros 30 caracteres #}
                 <br> {# Salto de línea #}
             </article>

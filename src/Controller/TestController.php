@@ -35,36 +35,42 @@ class TestController extends AbstractController
        return [
         [
             'id'=> 1,
+            'url'=>'images/symfony.jpg',
             'category'=>'tecnología',
             'title'=>'La IA dominará el mundo',
             'content'=>'Lorem Hola Mundo, primera Noticia,Lorem Hola Mundo, primera Noticia,Lorem Hola Mundo, primera Noticia,Lorem Hola Mundo, primera Noticia',
         ],
         [
             'id'=> 2,
+            'url'=>'images/a.jpg',
             'category'=>'tecnología',
             'title'=>'La IA dominará el mundo2',
             'content'=>'Lorem Hola Mundo2, primera Noticia,Lorem Hola Mundo, primera Noticia,Lorem Hola Mundo, primera Noticia,Lorem Hola Mundo, primera Noticia',
         ],
         [
             'id'=> 3,
+            'url'=>'images/symfony.jpg',
             'category'=>'tecnología',
             'title'=>'La IA dominará el mundo3',
             'content'=>'Lorem Hola Mundo3, primera Noticia,Lorem Hola Mundo, primera Noticia,Lorem Hola Mundo, primera Noticia,Lorem Hola Mundo, primera Noticia',
         ],
         [
             'id'=> 4,
+            'url'=>'images/a.jpg',
             'category'=>'deportes',
             'title'=>'Lo nuevo del futbol',
             'content'=>'Lorem Hola Mundo, segunda Noticia,Lorem Hola Mundo, segunda Noticia,Lorem Hola Mundo, segunda Noticia,Lorem Hola Mundo, segunda Noticia',
         ],
         [
             'id'=> 5,
+            'url'=>'images/symfony.jpg',
             'category'=>'arte',
             'title'=>'Lo nuevo del arte',
             'content'=>'Lorem Hola Mundo, primera Noticia,Lorem Hola Mundo, segunda Noticia,Lorem Hola Mundo, segunda Noticia,Lorem Hola Mundo, segunda Noticia',
         ],
         [
             'id'=> 6,
+            'url'=>'images/a.jpg',
             'category'=>'ciencia',
             'title'=>'Lo nuevo de las ciencas',
             'content'=>'Lorem Hola Mundo, primera Noticia,Lorem Hola Mundo, segunda Noticia,Lorem Hola Mundo, segunda Noticia,Lorem Hola Mundo, segunda Noticia',
