@@ -3,28 +3,39 @@
 {% block title %}Noticias{% endblock %}
 
 {% block body %}
-    <nav>
-        <ul>
-            <li><a href="{{ path('app_noticias') }}">Inicio</a></li>
-            <li><a href="{{ path('app_noticias',{'category': 'deportes'}) }}">Deportes</a></li>
-            <li><a href="{{ path('app_noticias',{'category': 'arte'}) }}">Arte</a></li>
-            <li><a href="{{ path('app_noticias',{'category': 'ciencia'}) }}">Ciencia</a></li>
-            <li><a href="{{ path('app_noticias',{'category': 'tecnología'}) }}">Tecnología</a></li>
+    <nav class="bg-blue-500 p-4 text-center">
+        <ul class="flex justify-center space-x-4">
+            <li>
+                <a href="{{ path('app_noticias') }}" class="text-white hover:text-yellow-300 transition duration-300">Inicio</a>
+            </li>
+            <li>
+                <a href="{{ path('app_noticias',{'category': 'deportes'}) }}" class="text-white hover:text-yellow-300 transition duration-300">Deportes</a>
+            </li>
+            <li>
+                <a href="{{ path('app_noticias',{'category': 'arte'}) }}" class="text-white hover:text-yellow-300 transition duration-300">Arte</a>
+            </li>
+            <li>
+                <a href="{{ path('app_noticias',{'category': 'ciencia'}) }}" class="text-white hover:text-yellow-300 transition duration-300">Ciencia</a>
+            </li>
+            <li>
+                <a href="{{ path('app_noticias',{'category': 'tecnología'}) }}" class="text-white hover:text-yellow-300 transition duration-300">Tecnología</a>
+            </li>
         </ul>
     </nav>
     <br>
-    <main>
+    <main class="w-1/2 mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
         {% if noticias == [] %}
             <p>No hay noticias para mostrar en {{ category }}...</p>
         {% endif %}
         
         {% for noticia in noticias %}
-            <article>
-                <img src="{{ asset(noticia.url) }}" width="300" alt="Error">
-                <h1 class="text-2xl"><a href="{{path('app_noticias_detalle',{'id': noticia.id  }) }}">{{ noticia.title }}</a></h1>
-                <h2>Categoría: {{ noticia.category }}</h2>{# imprime el índice category dentro del elemento que se está iterando #}
-                <p>{{ noticia.content|slice(0, 30,) ~ (noticia.content|length > 30 ? '...': '') }}</p>{# imprime solo los primeros 30 caracteres #}
-                <br> {# Salto de línea #}
+            <article class="bg-white rounded-lg shadow-md p-4">
+                <div class="mb-4">
+                    <img src="{{ asset(noticia.url) }}" alt="Error" class="w-full h-auto rounded-t-lg h-48 object-cover">
+                </div>
+                <h1 class="text-2xl text-blue-500 font-bold mb-2"><a href="{{ path('app_noticias_detalle',{'id': noticia.id}) }}" class="hover:underline">{{ noticia.title }}</a></h1>
+                <h2 class="text-gray-700 text-xl mb-4">Categoría: {{ noticia.category }}</h2>
+                <p class="text-gray-800">{{ noticia.content|slice(0, 50) ~ (noticia.content|length > 50 ? '...' : '') }}</p>
             </article>
         {% endfor %}
     </main>

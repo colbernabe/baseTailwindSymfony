@@ -3,24 +3,37 @@
 {% block title %}Noticias{% endblock %}
 
 {% block body %}
-    <nav>
-        <ul>
-            <li><a href="{{ path('app_noticias') }}">Inicio</a></li>
-            <li><a href="{{ path('app_noticias',{'category': 'deportes'}) }}">Deportes</a></li>
-            <li><a href="{{ path('app_noticias',{'category': 'arte'}) }}">Arte</a></li>
-            <li><a href="{{ path('app_noticias',{'category': 'ciencia'}) }}">Ciencia</a></li>
-            <li><a href="{{ path('app_noticias',{'category': 'tecnología'}) }}">Tecnología</a></li>
+    <nav class="bg-blue-500 p-4 text-center">
+        <ul class="flex justify-center space-x-4">
+            <li>
+                <a href="{{ path('app_noticias') }}" class="text-white hover:text-yellow-300 transition duration-300">Inicio</a>
+            </li>
+            <li>
+                <a href="{{ path('app_noticias',{'category': 'deportes'}) }}" class="text-white hover:text-yellow-300 transition duration-300">Deportes</a>
+            </li>
+            <li>
+                <a href="{{ path('app_noticias',{'category': 'arte'}) }}" class="text-white hover:text-yellow-300 transition duration-300">Arte</a>
+            </li>
+            <li>
+                <a href="{{ path('app_noticias',{'category': 'ciencia'}) }}" class="text-white hover:text-yellow-300 transition duration-300">Ciencia</a>
+            </li>
+            <li>
+                <a href="{{ path('app_noticias',{'category': 'tecnología'}) }}" class="text-white hover:text-yellow-300 transition duration-300">Tecnología</a>
+            </li>
         </ul>
     </nav>
     <br>
-    <main>
-        <article>
-            <img src="{{ asset(noticia[0].url) }}" width="800" alt="Error">
-            <h1 class="text-2xl">{{ noticia[0].title }}</h1>
-            <h2>Categoría: {{ noticia[0].category }}</h1>{# imprime el índice category dentro del elemento que se está iterando #}
-            <p>{{ noticia[0].content }}</p>{# imprime solo los primeros 30 caracteres #}
-            <br> {# Salto de línea #}
+    <main class="w-1/2 mx-auto">
+        <article class="bg-white rounded-lg shadow-md p-4 m-4">
+            <div class="relative">
+                <img src="{{ asset(noticia[0].url) }}" alt="Error" class="w-full rounded-t-lg">
+                <div class="absolute top-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2">
+                    <h1 class="text-3xl font-bold">{{ noticia[0].title }}</h1>
+                    <h2 class="text-xl">{{ noticia[0].category }}</h2>
+                </div>
+            </div>
+            <p class="text-gray-800 mt-4">{{ noticia[0].content }}</p>
         </article>
-      
     </main>
+
 {% endblock %}
