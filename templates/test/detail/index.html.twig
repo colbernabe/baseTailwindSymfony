@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Noticias{% endblock %}
+
+{% block body %}
+    <nav>
+        <ul>
+            <li><a href="{{ path('app_noticias') }}">Inicio</a></li>
+            <li><a href="{{ path('app_noticias',{'category': 'deportes'}) }}">Deportes</a></li>
+            <li><a href="{{ path('app_noticias',{'category': 'arte'}) }}">Arte</a></li>
+            <li><a href="{{ path('app_noticias',{'category': 'ciencia'}) }}">Ciencia</a></li>
+            <li><a href="{{ path('app_noticias',{'category': 'tecnología'}) }}">Tecnología</a></li>
+        </ul>
+    </nav>
+    <br>
+    <main>
+        <article>
+            <h1 class="text-2xl">{{ noticia[0].title }}</h1>
+            <h2>Categoría: {{ noticia[0].category }}</h1>{# imprime el índice category dentro del elemento que se está iterando #}
+            <p>{{ noticia[0].content }}</p>{# imprime solo los primeros 30 caracteres #}
+            <br> {# Salto de línea #}
+        </article>
+      
+    </main>
+{% endblock %}
